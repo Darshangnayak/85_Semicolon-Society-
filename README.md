@@ -28,6 +28,14 @@ A modern React + Vite application that lets users explore models and start a boo
 > • Node.js: [https://nodejs.org/](https://nodejs.org/)
 > • Git: [https://git-scm.com/](https://git-scm.com/)
 
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](./screenshots/homepage.png)
+
+### 🚗 Car Customization
+![Car Customization](./screenshots/customization.png)
 ---
 
 ## 📁 Project Structure (suggested)
