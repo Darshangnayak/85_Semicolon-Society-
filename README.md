@@ -32,10 +32,13 @@ A modern React + Vite application that lets users explore models and start a boo
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home Page](./screenshots/homepage.png)
+![Home Page](https://github.com/Darshangnayak/85_Semicolon-Society-/blob/8001e578528281f75f81386454ebc99d87422903/homepage%20(2).png)
+### 🚗 Car Models
+![Car Customization](https://github.com/Darshangnayak/85_Semicolon-Society-/blob/8001e578528281f75f81386454ebc99d87422903/models.png)
 
 ### 🚗 Car Customization
-![Car Customization](./screenshots/customization.png)
+![Car Customization](https://github.com/Darshangnayak/85_Semicolon-Society-/blob/8001e578528281f75f81386454ebc99d87422903/jeep.png)
+
 ---
 
 ## 📁 Project Structure (suggested)
