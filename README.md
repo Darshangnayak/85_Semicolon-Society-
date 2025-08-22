@@ -1,52 +1,240 @@
-# 4x4Builder.com 🚙
+# 3D Car Customizer
 
-![4x4 Builder Screenshot](assets/images/screenshot.png)
+A modern React + Vite application that lets users explore models and start a booking/consultation for a customized 3D car experience.
 
-4x4Builder.com is an online 3D application that allows users to construct their ideal 4x4 vehicle in the browser. Whether you're a car enthusiast or just someone who enjoys exploring the world of 3D, 4x4 Builder provides an interactive and immersive experience for building your dream off-road vehicle.
+> Built by **Semicolon Society**.
 
-## Tech Stack 🛠️
+---
 
--   React
--   Three.js
--   React Three Fiber
--   Vite
+## ✨ Features
 
-## Features 🌟
+* **Hero section** with call‑to‑action (Customize / Book)
+* **Models gallery** (Toyota Land Cruiser, Jeep Rubicon, Ford Bronco)
+* **Features section** (AR/VR ready text, real‑time configurator copy)
+* **Booking**: embedded form (name, email, phone, model) or optional dedicated route `/booking`
+* **Responsive UI** styled with Tailwind CSS
 
--   Interactive 3D environment
--   Wide selection of vehicles with parts and accessories
--   User-friendly interface for easy customization
--   Real-time rendering and visualization
+---
 
-## Quick Setup ⚙️
+## 🧰 Tech Stack
 
-To get started with 4x4 Builder, follow these steps:
+* **Framework**: [React](https://react.dev/)
+* **Build tool**: [Vite](https://vitejs.dev/guide/)
+* **Router**: [React Router](https://reactrouter.com/en/main/start/overview)
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/docs/installation)
+* **Package manager**: [npm](https://docs.npmjs.com/)
 
-1. Clone the repository:
+> Make sure you have **Node.js** and **Git** installed:
+> • Node.js: [https://nodejs.org/](https://nodejs.org/)
+> • Git: [https://git-scm.com/](https://git-scm.com/)
 
-`git clone https://github.com/theshanergy/4x4builder.git`
+---
 
-2. Change directory to the project folder:
+## 📁 Project Structure (suggested)
 
-`cd 4x4builder`
+```
+project-root/
+├─ public/
+│  └─ assets/
+│     └─ images/
+│        ├─ background.jpg
+│        ├─ f.avif
+│        ├─ ru.jpg
+│        └─ br.jpg
+├─ src/
+│  ├─ components/
+│  │  ├─ HomePage.jsx
+│  │  └─ Booking.jsx                # (optional) dedicated booking page
+│  ├─ App.jsx
+│  └─ main.jsx
+├─ index.html
+├─ package.json
+└─ tailwind.config.js               # if Tailwind is used
+```
 
-3. Install dependencies:
+> Place the referenced images inside `public/assets/images/` so URLs like `/assets/images/background.jpg` work.
 
-`npm install`
+---
 
-4. Start the development server:
+## 🚀 Getting Started
 
-`npm run dev`
+### 1) Clone or download
 
-5. Open your browser and navigate to `http://localhost:5173` to start building your 4x4 vehicle!
+```bash
+git clone <your-repo-url>
+cd <project-folder>
+```
 
-## Contributing 🤝
+### 2) Install dependencies
 
-Contributions are welcome - If you'd like to contribute, please feel free to submit a pull request or open an issue on GitHub.
+```bash
+npm install
+```
 
-## Acknowledgements 🙏
+### 3) Run the dev server
 
--   [React](https://react.dev/)
--   [Three.js](https://threejs.org/)
--   [React Three Fiber](https://github.com/pmndrs/react-three-fiber)
--   [Vite](https://vitejs.dev/)
+```bash
+npm run dev
+```
+
+Vite will print a local URL (typically `http://localhost:5173`).
+
+### 4) Production build & preview
+
+```bash
+npm run build
+npm run preview
+```
+
+> Default Vite scripts (in `package.json`):
+
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}
+```
+
+---
+
+## 🔀 Routing
+
+* `/` → `HomePage.jsx` (hero, models, features, booking form)
+* `/customize` → your configurator page (add your component/route)
+* `/booking` → (optional) separate form page `Booking.jsx` if you prefer navigating away from the home page
+
+**Example `App.jsx`:**
+
+```jsx
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import Booking from "./components/Booking"; // optional
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/booking" element={<Booking />} />
+        {/* Add your /customize route here */}
+      </Routes>
+    </Router>
+  );
+}
+```
+
+---
+
+## 🧩 Environment / Assets
+
+* Put public images under `public/assets/images/` (Vite serves them as `/assets/images/...`).
+* If you later add APIs/keys, create a `.env` file and use **Vite prefixes** like `VITE_API_URL` (see: [https://vitejs.dev/guide/env-and-mode.html](https://vitejs.dev/guide/env-and-mode.html)).
+
+---
+
+## 🛠 Troubleshooting (Windows / OneDrive / Vite)
+
+### EPERM: operation not permitted (rmdir ... `.vite`) on Windows
+
+This is commonly caused by **OneDrive locking files** inside your project.
+
+**Fix options:**
+
+1. **Move your project outside OneDrive** (recommended):
+
+   * Example path: `C:\Projects\3D_Car_Customizer`
+   * Then reinstall: `npm install` → `npm run dev`
+2. **Delete Vite cache** (PowerShell):
+
+   ```powershell
+   Remove-Item -Recurse -Force "<your-project>\node_modules\.vite"
+   ```
+3. **Pause OneDrive syncing**, then try again (see Microsoft OneDrive help: [https://support.microsoft.com/office/pause-and-resume-sync-in-onedrive-398b8b44-1737-4a7d-8c49-5fbf5e6be59a](https://support.microsoft.com/office/pause-and-resume-sync-in-onedrive-398b8b44-1737-4a7d-8c49-5fbf5e6be59a))
+
+### Paths with spaces
+
+Wrap in quotes in PowerShell:
+
+```powershell
+cd "C:\Users\you\Desktop\3D Car Customizer"
+```
+
+### npm peer dependency conflicts
+
+If you see `ERESOLVE` errors:
+
+```powershell
+# clean install
+Remove-Item -Recurse -Force node_modules, package-lock.json
+npm install
+
+# if needed
+npm install --legacy-peer-deps
+```
+
+### React Router not found
+
+Install it if missing:
+
+```bash
+npm install react-router-dom
+```
+
+---
+
+## ⛅️ Booking Form (inline vs separate page)
+
+* **Inline**: Home page contains a form (Name, Email, Phone, Model). Hook it to your backend/DB or email service as needed.
+* **Separate page**: Link the navbar **Booking** item to `/booking` and render `Booking.jsx` with the same fields + submit logic.
+
+> React forms guide (official): [https://react.dev/learn](https://react.dev/learn)
+
+---
+
+## 🧪 Linting & Quality (optional but recommended)
+
+* ESLint: [https://eslint.org/](https://eslint.org/)
+* Prettier: [https://prettier.io/](https://prettier.io/)
+
+**Install quickly:**
+
+```bash
+npm install -D eslint prettier
+```
+
+---
+
+## 📤 Push to GitHub
+
+### First time
+
+```bash
+git init
+git add .
+git commit -m "Initial commit: 3D Car Customizer"
+git branch -M main
+git remote add origin https://github.com/<your-username>/<repo>.git
+git push -u origin main
+```
+
+### Non-fast-forward / rejected push
+
+If GitHub already has commits (README, etc.):
+
+**Option A (merge safely):**
+
+```bash
+git pull origin main --rebase
+git push origin main
+```
+
+**Option B (overwrite GitHub – caution!):**
+
+```bash
+git push origin main --force
+```
+
+> Git basics: https
